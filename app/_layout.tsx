@@ -10,6 +10,7 @@ export default function RootLayout() {
 
   const [loaded, error] = useFonts({
     'Lato': require('../assets/fonts/Lato-Regular.ttf'),
+    "Roboto": require('../assets/fonts/Roboto-Regular.ttf'),
   });
 
   useEffect(() => {

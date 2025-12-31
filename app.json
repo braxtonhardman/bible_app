@@ -12,7 +12,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.braxtonhardman.bibleapp",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSBluetoothAlwaysUsageDescription": "This app uses Bluetooth to connect to devices."
       }
     },
     "android": {
