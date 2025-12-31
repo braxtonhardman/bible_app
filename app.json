@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.braxtonhardman.bibleapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +23,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.braxtonhardman.bibleapp"
     },
     "web": {
       "output": "static",
@@ -39,11 +44,25 @@
           }
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "react-native-ble-plx",
+          {
+            "isBackgroundEnabled": true,
+            "modes": ["peripheral", "central"],
+            "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+          }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "999b7671-87a6-4598-9758-e97c21b78795"
+      }
     }
   }
 }

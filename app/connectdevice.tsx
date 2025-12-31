@@ -1,9 +1,12 @@
 import React from 'react'
-import {Text} from 'react-native'
+import { Text, View } from 'react-native'
 
 function ConnectDevice() {
   return (
-    <Text>Hello this is the connect device page</Text>
+    <View>
+      <Text>Hello this is the connect device page</Text>
+    </View>
+    
   )
 }
 
