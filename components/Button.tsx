@@ -1,44 +1,26 @@
 import React from "react";
-import { StyleSheet, Pressable, Text, View} from "react-native";
-import { useRouter } from "expo-router";
+import {Pressable, View, ViewStyle} from "react-native";
+import { useRouter, RelativePathString } from "expo-router";
+import {styles} from "../assets/styles";
 
-export default function Button() {
+type ButtonProps = { 
+  children: React.ReactElement, 
+  path: RelativePathString, 
+  style?: ViewStyle, 
+}
+
+export default function Button({ children, path, style}: ButtonProps) {
   const router = useRouter();
 
   return (
-    <View style={styles.button}>
+    <View style={style}>
       <Pressable
-        onPress={() => {
-          router.navigate("/connectdevice");
-          console.log("Get Started!");
+        onPress={() => { 
+          router.navigate(path);
         }}
       >
-        <Text style={styles.text}>Get Started</Text>
+        {children}
       </Pressable>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 5,
-    backgroundColor: "black",
-    padding: 5,
-    marginBottom: 0,
-
-    // iOS shadow
-    shadowColor: "#000", // shadow color
-    shadowOffset: { width: 0, height: 2 }, // position of shadow
-    shadowOpacity: 0.3, // transparency
-    shadowRadius: 3, // blur
-
-    // Android shadow
-    elevation: 5, // makes shadow visible on Android
-  },
-  text: {
-    color: "white",
-    fontSize: 40,
-    margin: 5,
-    fontFamily: "Roboto",
-  },
-});

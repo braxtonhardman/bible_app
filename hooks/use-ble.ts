@@ -1,5 +1,6 @@
 import { PermissionsAndroid, Platform } from "react-native";
 import * as ExpoDevice from "expo-device";
+import { BleManager, BleError, Device } from 'react-native-ble-plx'
 
 const requestAndroid31Permissions = async () => {
   const bluetoothScanPermission = await PermissionsAndroid.request(
@@ -56,4 +57,34 @@ const requestPermissions = async () => {
   }
 };
 
-export {requestPermissions};
+function scanAndConnect(manager: BleManager) {
+
+  let devices: string[] = [];
+  let scanError: BleError; 
+
+    manager.startDeviceScan(null, null, (error, device) => {
+      if (error) {
+        scanError = error
+        return
+      }
+
+      if(device == null) return; 
+
+      // Check if it is a device you are looking for based on advertisement data
+      // or other criteria.
+      if (device.name === 'TI BLE Sensor Tag' || device.name === 'SensorTag') {
+        // Stop scanning as it's not necessary if you are scanning for one device.
+        manager.stopDeviceScan()
+
+        // Proceed with connection.
+      }
+
+      if(!device.name) return; 
+      devices.push(device.name);
+    })
+
+  return devices; 
+  
+}
+
+export {scanAndConnect, requestPermissions};
