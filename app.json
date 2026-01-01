@@ -48,11 +48,22 @@
       "expo-font",
       [
         "react-native-ble-plx",
-          {
-            "isBackgroundEnabled": true,
-            "modes": ["peripheral", "central"],
-            "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+        {
+          "isBackgroundEnabled": true,
+          "modes": [
+            "peripheral",
+            "central"
+          ],
+          "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+        }
+      ],
+      [
+      "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1"
           }
+        }
       ]
     ],
     "experiments": {
